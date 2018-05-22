@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>一个动态的购物车</title>
+</head>
+<body>
+	<h1>My shopping list</h1>
+	<p>
+		Eneter a new item:
+		<input type="text" name="addItem" id="addItem">
+		<button id="addButton">Add item</button>
+	</p>
+	<ul id="itemList">
+	</ul>
+	<script type="text/javascript">
+		var add=document.getElementById('addButton');
+		var list=document.getElementById('itemList');
+		add.onclick = function(){
+			var itemContent=document.getElementById('addItem').value;
+			document.getElementById('addItem').value='';
+			if (itemContent!='') {
+				var newItem=document.createElement('li');
+				var newButton=document.createElement('button');
+				newItem.innerHTML=itemContent+'&nbsp;&nbsp;';
+				newButton.innerHTML='Delete';
+				newItem.appendChild(newButton);
+				list.appendChild(newItem);
+
+				newButton.onclick=function(){
+					console.log(123);
+					list.removeChild(newItem);
+				}
+			}
+			else{
+				alert("请输入内容！")
+			}
+		}
+		
+	</script>
+</body>
+</html>
